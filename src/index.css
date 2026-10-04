@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+@theme {
+  --color-teal: #12b3a4;
+  --color-coral: #ff5b57;
+  --color-mustard: #ffc531;
+  --color-violet: #6b5be6;
+  --color-sky: #3aa0ff;
+  --color-cream: #f5efe2;
+  --color-ink: #17140d;
+
+  --font-bricolage: "Bricolage Grotesque", sans-serif;
+  --font-dm: "DM Sans", sans-serif;
+
+  --shadow-hard: 8px 8px 0 #17140d;
+  --shadow-hard-sm: 5px 5px 0 #17140d;
+  --shadow-hard-active: 3px 3px 0 #17140d;
+}
+
+@layer base {
+  body {
+    @apply bg-cream text-ink font-dm antialiased overflow-x-hidden;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply rounded-xl border-3 border-ink font-dm font-bold transition-transform shadow-[var(--shadow-hard-sm)] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[var(--shadow-hard-active)] active:translate-x-1 active:translate-y-1 active:shadow-none bg-coral text-white px-6 py-3;
+  }
+  .btn-secondary {
+    @apply rounded-xl border-3 border-ink font-dm font-bold transition-transform shadow-[var(--shadow-hard-sm)] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[var(--shadow-hard-active)] active:translate-x-1 active:translate-y-1 active:shadow-none bg-white text-ink px-6 py-3;
+  }
+  .btn-nav {
+    @apply rounded-xl border-3 border-ink font-dm font-bold transition-transform shadow-[var(--shadow-hard-sm)] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[var(--shadow-hard-active)] active:translate-x-1 active:translate-y-1 active:shadow-none bg-teal text-white px-5 py-2;
+  }
+  .card {
+    @apply bg-white border-3 border-ink rounded-[22px] shadow-[var(--shadow-hard)];
+  }
+  .input-base {
+    @apply border-3 border-ink rounded-xl px-4 py-3 font-dm bg-white focus:outline-none focus:ring-2 focus:ring-mustard transition-shadow;
+  }
+}
+
+@keyframes drift {
+  0% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-20px) rotate(10deg); }
+  100% { transform: translateY(0) rotate(0); }
+}
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+@keyframes sway {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+}
+
+.animate-drift { animation: drift 10s ease-in-out infinite; }
+.animate-spin-slow { animation: spin-slow 26s linear infinite; }
+.animate-bob { animation: bob 6s ease-in-out infinite; }
+.animate-sway { animation: sway 8s ease-in-out infinite; }
